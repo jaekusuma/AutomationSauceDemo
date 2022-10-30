@@ -1,7 +1,7 @@
 package step_definitions;
 
-import com.example.pageObject.LoginPage;
-import com.example.pageObject.LandingPage;
+import com.example.loginPage;
+import com.example.itemListPage;
 import cucumber.api.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -16,13 +16,13 @@ public class loginSteps {
 
     @Given("User open the web page")
     public void verifyLoginPage(){
-        LoginPage loginPage = new LoginPage(webDriver);
-        loginPage.isDisplayed();
+        loginPage ab = new loginPage(webDriver);
+        ab.isDisplayed();
     }
 
     @When("User input \"(.*)\" as userName and \"(.*)\" as pasword")
     public void inputCredential(String userName, String password){
-        LoginPage loginPage = new LoginPage(webDriver);
+        loginPage loginPage = new loginPage(webDriver);
         loginPage.setUsername(userName);
         loginPage.setPassword(password);
         loginPage.clickLogin();
@@ -30,13 +30,13 @@ public class loginSteps {
 
     @Then("User is already in landing page")
     public void isDashboardIsDisplayed() {
-        LandingPage landingPage = new LandingPage(webDriver);
-        Assert.assertTrue(landingPage.isDisplayed());
+        itemListPage itemListPage = new itemListPage(webDriver);
+        Assert.assertTrue(itemListPage.isDisplayed());
     }
 
     @Then("User will see \"(.*)\" on login page")
     public void displayErrorMassage(String errorText){
-        LoginPage loginPage = new LoginPage(webDriver);
+        loginPage loginPage = new loginPage(webDriver);
         assertEquals(errorText, loginPage.getErrorMessage());
     }
 }
